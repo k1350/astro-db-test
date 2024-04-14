@@ -1,5 +1,6 @@
 ---
 import { count, db, eq, Like } from 'astro:db';
+import { AddLikeForm } from './AddLikeForm';
 
 const currentPath = Astro.url.pathname;
 const likeCounts = await db.select({ count: count() }).from(Like).where(eq(Like.url, currentPath));
@@ -7,3 +8,4 @@ const likeCount = likeCounts.length > 0 ? likeCounts[0].count : 0;
 ---
 
 <p>Likes: {likeCount}</p>
+<AddLikeForm url={`${Astro.url.pathname}`} client:load />
