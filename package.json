@@ -8,7 +8,8 @@
     "build": "astro check && astro build --remote",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy:vercel": "vercel deploy"
+    "deploy:vercel": "vercel deploy",
+    "lint": "biome check --apply ."
   },
   "dependencies": {
     "@astrojs/check": "^0.6.0",
@@ -18,5 +19,8 @@
     "astro": "^4.8.0",
     "preact": "^10.21.0",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.7.3"
   }
 }

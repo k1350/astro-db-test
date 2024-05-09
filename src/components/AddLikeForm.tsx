@@ -2,7 +2,7 @@ import { useState } from "preact/hooks";
 
 type Props = {
   url: string;
-}
+};
 export function AddLikeForm({ url }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -23,7 +23,9 @@ export function AddLikeForm({ url }: Props) {
   return (
     <form onSubmit={submit}>
       <input type="hidden" name="url" value={`${url}`} />
-      <button type="submit" disabled={isSubmitting}>Add Like</button>
+      <button type="submit" disabled={isSubmitting}>
+        Add Like
+      </button>
     </form>
   );
 }
