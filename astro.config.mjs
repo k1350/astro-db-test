@@ -8,4 +8,7 @@ export default defineConfig({
   integrations: [db(), preact()],
   output: "server",
   adapter: vercel(),
+  experimental: {
+    actions: true,
+  },
 });

@@ -1,22 +1,19 @@
+import { actions } from "astro:actions";
 import { useState } from "preact/hooks";
 
 type Props = {
   url: string;
+  updateLikeCount: (newLikeCount: number) => void;
 };
-export function AddLikeForm({ url }: Props) {
+export function AddLikeForm({ url, updateLikeCount }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function submit(e: SubmitEvent) {
     e.preventDefault();
     setIsSubmitting(true);
     const formData = new FormData(e.target as HTMLFormElement);
-    const response = await fetch("/api/addLike", {
-      method: "POST",
-      body: formData,
-    });
-    if (response.status === 200) {
-      window.location.reload();
-    }
+    const result = await actions.addLike(formData);
+    updateLikeCount(result.likeCount);
     setIsSubmitting(false);
   }
 
